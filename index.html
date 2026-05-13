@@ -606,7 +606,7 @@
         </div>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#countdown">Смотреть отсчёт</a>
+          <a class="btn btn-primary" href="#countdown">Наша история</a>
           <a class="btn btn-secondary" href="#details">Детали дня</a>
         </div>
       </div>
@@ -635,10 +635,10 @@
   <section id="countdown" class="section-lg">
     <div class="container">
       <div class="card glass countdown-wrap">
-        <p class="section-kicker">До свадьбы осталось</p>
-        <h2 class="section-title">Считаем дни до нашего праздника</h2>
+        <p class="section-kicker">Наша семья существует уже</p>
+        <h2 class="section-title">Столько времени прошло с нашего «да»</h2>
         <p class="section-desc">
-          Совсем скоро мы скажем друг другу самые важные слова и будем счастливы, если Вы окажетесь рядом в этот день.
+          Каждый день с 26 марта 2026 года становится частью нашей общей истории.
         </p>
 
         <div class="countdown-grid">
@@ -830,20 +830,12 @@
 
     function updateCountdown() {
       const now = new Date();
-      const diff = weddingDate - now;
+      const diff = Math.max(now - weddingDate, 0);
 
       const daysEl = document.getElementById('days');
       const hoursEl = document.getElementById('hours');
       const minutesEl = document.getElementById('minutes');
       const secondsEl = document.getElementById('seconds');
-
-      if (diff <= 0) {
-        daysEl.textContent = '00';
-        hoursEl.textContent = '00';
-        minutesEl.textContent = '00';
-        secondsEl.textContent = '00';
-        return;
-      }
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
